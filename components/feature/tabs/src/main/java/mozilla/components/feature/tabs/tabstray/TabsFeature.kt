@@ -23,9 +23,8 @@ import mozilla.components.support.base.feature.LifecycleAwareFeature
 class TabsFeature(
     tabsTray: TabsTray,
     private val store: BrowserStore,
-    selectTabUseCase: TabsUseCases.SelectTabUseCase,
-    removeTabUseCase: TabsUseCases.RemoveTabUseCase,
-    thumbnailsUseCases: ThumbnailsUseCases? = null,
+    tabsUseCases: TabsUseCases,
+    thumbnailsUseCases: ThumbnailsUseCases,
     private val defaultTabsFilter: (TabSessionState) -> Boolean = { true },
     closeTabsTray: () -> Unit
 ) : LifecycleAwareFeature {

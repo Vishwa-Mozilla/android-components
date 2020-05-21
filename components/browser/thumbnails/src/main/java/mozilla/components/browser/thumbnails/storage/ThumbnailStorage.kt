@@ -10,10 +10,15 @@ import androidx.annotation.WorkerThread
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
+<<<<<<< HEAD
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+=======
+import kotlinx.coroutines.asCoroutineDispatcher
+import kotlinx.coroutines.async
+>>>>>>> Issue #7021: Integrate the ThumbnailDiskCache with BrowserThumbnails
 import mozilla.components.browser.thumbnails.R
 import mozilla.components.browser.thumbnails.utils.ThumbnailDiskCache
 import mozilla.components.support.base.log.logger.Logger
@@ -79,12 +84,11 @@ class ThumbnailStorage(
      * Stores the given thumbnail [Bitmap] into the disk cache with the provided session ID or url
      * as its key.
      */
-    fun saveThumbnail(sessionIdOrUrl: String, bitmap: Bitmap): Job =
-        scope.launch {
-            logger.debug(
-                "Saved thumbnail to disk (sessionIdOrUrl = $sessionIdOrUrl, " +
-                    "generationId = ${bitmap.generationId})"
-            )
-            sharedDiskCache.putThumbnailBitmap(context, sessionIdOrUrl, bitmap)
-        }
+    fun saveThumbnail(sessionIdOrUrl: String, bitmap: Bitmap) {
+        logger.debug(
+            "Saved thumbnail to disk (sessionIdOrUrl = $sessionIdOrUrl, " +
+                "generationId = ${bitmap.generationId})"
+        )
+        sharedDiskCache.putThumbnailBitmap(context, sessionIdOrUrl, bitmap)
+    }
 }

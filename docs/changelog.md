@@ -81,38 +81,13 @@ permalink: /changelog/
   * Added support for [onbeforeunload prompt](https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload)
 
 * **feature-tabs**
-  * Added an optional `ThumbnailsUseCases` to `TabsFeature` and `TabsTrayPresenter` for loading a
-    tab's thumbnail.
+  * ⚠️ **This is a breaking change**: Added a dependency on `ThumbnailsUseCases` to `TabsFeature` and `TabsTrayPresenter`
+    for loading a tab's thumbnail.
 
 * **browser-thumbnails**
   * Adds `LoadThumbnailUseCase` in `ThumbnailsUseCases` for loading the thumbnail of a tab.
   * Adds `ThumbnailStorage` as a storage layer for handling saving and loading a thumbnail from the
     disk cache.
-
-* **feature-push**
-  * Adds the `getSubscription` call to check if a subscription exists.
-
-* **browser-engine-gecko-***
-  * Fixes GeckoWebPushDelegate to gracefully return when a subscription is not available.
-
-* **feature-session**
-  * Removes unused `ThumbnailsFeature` since this has been refactored into its own browser-thumbnails component in
-    [#6827](https://github.com/mozilla-mobile/android-components/issues/6827).
-
-* **browser-state**
-  * Adds `BrowserState.getNormalOrPrivateTabs(private: Boolean)` to get `normalTabs` or `privateTabs` based on a boolean condition.
-
-* **support-utils**
-  * `URLStringUtils.isURLLikeStrict`, deprecated in 40.0.0, was now removed due to performance issues. Use the less strict and much faster `isURLLike` instead or customize based on `:lib-publicsuffixlist`.
-
-* **support-ktx**
-  * `String.isUrlStrict`, deprecated in 40.0.0, was now removed due to performance issues. Use the less strict `isURL` instead or customize based on `:lib-publicsuffixlist`.
-
-* **service-glean**
-  * Glean was updated to v31.0.2
-    * Provide a new upload mechanism, now driven by internals. This has no impact to consumers of service-glean.
-    * Automatically Gzip-compress ping payloads before upload
-    * Upgrade `glean_parser` to v1.22.0
 
 # 43.0.0
 

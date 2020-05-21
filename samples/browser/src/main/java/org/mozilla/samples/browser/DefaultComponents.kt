@@ -120,12 +120,8 @@ open class DefaultComponents(private val applicationContext: Context) {
         BrowserStore(middleware = listOf(
             MediaMiddleware(applicationContext, MediaService::class.java),
             DownloadMiddleware(applicationContext, DownloadService::class.java),
-<<<<<<< HEAD
             ReaderViewMiddleware(),
             ThumbnailsMiddleware(thumbnailStorage)
-=======
-            ReaderViewMiddleware()
->>>>>>> Closes #7103 #5217: Move queued download state to browser store
         ))
     }
 

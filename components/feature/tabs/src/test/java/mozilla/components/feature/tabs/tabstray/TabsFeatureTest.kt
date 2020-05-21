@@ -22,9 +22,8 @@ class TabsFeatureTest {
         val store = BrowserStore()
         val presenter: TabsTrayPresenter = mock()
         val interactor: TabsTrayInteractor = mock()
-        val selectTabUseCase: TabsUseCases.SelectTabUseCase = mock()
-        val removeTabUseCase: TabsUseCases.RemoveTabUseCase = mock()
-        val tabsFeature = spy(TabsFeature(mock(), store, selectTabUseCase, removeTabUseCase, mock(), mock(), mock()))
+        val useCases = TabsUseCases(sessionManager)
+        val tabsFeature = spy(TabsFeature(mock(), store, useCases, mock(), mock(), mock()))
 
         assertNotEquals(tabsFeature.interactor, interactor)
         assertNotEquals(tabsFeature.presenter, presenter)
@@ -41,9 +40,8 @@ class TabsFeatureTest {
         val store = BrowserStore()
         val presenter: TabsTrayPresenter = mock()
         val interactor: TabsTrayInteractor = mock()
-        val selectTabUseCase: TabsUseCases.SelectTabUseCase = mock()
-        val removeTabUseCase: TabsUseCases.RemoveTabUseCase = mock()
-        val tabsFeature = spy(TabsFeature(mock(), store, selectTabUseCase, removeTabUseCase, mock(), mock(), mock()))
+        val useCases = TabsUseCases(sessionManager)
+        val tabsFeature = spy(TabsFeature(mock(), store, useCases, mock(), mock(), mock()))
 
         tabsFeature.presenter = presenter
         tabsFeature.interactor = interactor
@@ -59,9 +57,8 @@ class TabsFeatureTest {
         val store = BrowserStore()
         val presenter: TabsTrayPresenter = mock()
         val interactor: TabsTrayInteractor = mock()
-        val selectTabUseCase: TabsUseCases.SelectTabUseCase = mock()
-        val removeTabUseCase: TabsUseCases.RemoveTabUseCase = mock()
-        val tabsFeature = spy(TabsFeature(mock(), store, selectTabUseCase, removeTabUseCase, mock(), mock(), mock()))
+        val useCases = TabsUseCases(sessionManager)
+        val tabsFeature = spy(TabsFeature(mock(), store, useCases, mock(), mock(), mock()))
 
         tabsFeature.presenter = presenter
         tabsFeature.interactor = interactor
@@ -77,9 +74,8 @@ class TabsFeatureTest {
         val store = BrowserStore()
         val presenter: TabsTrayPresenter = mock()
         val interactor: TabsTrayInteractor = mock()
-        val selectTabUseCase: TabsUseCases.SelectTabUseCase = mock()
-        val removeTabUseCase: TabsUseCases.RemoveTabUseCase = mock()
-        val tabsFeature = spy(TabsFeature(mock(), store, selectTabUseCase, removeTabUseCase, mock(), mock(), mock()))
+        val useCases = TabsUseCases(sessionManager)
+        val tabsFeature = spy(TabsFeature(mock(), store, useCases, mock(), mock(), mock()))
 
         tabsFeature.presenter = presenter
         tabsFeature.interactor = interactor
@@ -96,17 +92,9 @@ class TabsFeatureTest {
     fun `filterTabs uses default filter if a new one is not provided`() {
         val store = BrowserStore()
         val filter: (TabSessionState) -> Boolean = { false }
-        val selectTabUseCase: TabsUseCases.SelectTabUseCase = mock()
-        val removeTabUseCase: TabsUseCases.RemoveTabUseCase = mock()
-        val tabsFeature = spy(TabsFeature(
-            mock(),
-            store,
-            selectTabUseCase,
-            removeTabUseCase,
-            mock(),
-            defaultTabsFilter = filter,
-            closeTabsTray = mock()
-        ))
+        val sessionManager = SessionManager(engine = mock())
+        val useCases = TabsUseCases(sessionManager)
+        val tabsFeature = spy(TabsFeature(mock(), store, useCases, mock(), filter, mock()))
         val presenter: TabsTrayPresenter = mock()
         val interactor: TabsTrayInteractor = mock()
 
