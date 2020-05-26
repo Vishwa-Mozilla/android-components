@@ -4,7 +4,10 @@
 
 package mozilla.components.feature.downloads
 
+<<<<<<< HEAD
 import android.app.DownloadManager
+=======
+>>>>>>> Closes #7103 #5217: Move queued download state to browser store
 import android.app.DownloadManager.EXTRA_DOWNLOAD_ID
 import android.app.Notification
 import android.app.NotificationManager

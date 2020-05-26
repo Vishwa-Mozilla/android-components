@@ -6,7 +6,10 @@ package mozilla.components.browser.state.reducer
 
 import mozilla.components.browser.state.action.DownloadAction
 import mozilla.components.browser.state.state.BrowserState
+<<<<<<< HEAD
 import mozilla.components.browser.state.state.content.DownloadState
+=======
+>>>>>>> Closes #7103 #5217: Move queued download state to browser store
 
 internal object DownloadStateReducer {
 
@@ -15,9 +18,14 @@ internal object DownloadStateReducer {
      */
     fun reduce(state: BrowserState, action: DownloadAction): BrowserState {
         return when (action) {
+<<<<<<< HEAD
             is DownloadAction.QueueDownloadAction -> updateQueuedDownloads(state, action.download)
             is DownloadAction.UpdateQueuedDownloadAction -> {
                 updateQueuedDownloads(state, action.download)
+=======
+            is DownloadAction.QueueDownloadAction -> {
+                state.copy(queuedDownloads = state.queuedDownloads + (action.download.id to action.download))
+>>>>>>> Closes #7103 #5217: Move queued download state to browser store
             }
             is DownloadAction.RemoveQueuedDownloadAction -> {
                 state.copy(queuedDownloads = state.queuedDownloads - action.downloadId)
@@ -27,7 +35,10 @@ internal object DownloadStateReducer {
             }
         }
     }
+<<<<<<< HEAD
 
     private fun updateQueuedDownloads(state: BrowserState, download: DownloadState) =
             state.copy(queuedDownloads = state.queuedDownloads + (download.id to download))
+=======
+>>>>>>> Closes #7103 #5217: Move queued download state to browser store
 }

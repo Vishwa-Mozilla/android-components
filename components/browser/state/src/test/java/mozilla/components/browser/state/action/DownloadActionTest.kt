@@ -58,6 +58,7 @@ class DownloadActionTest {
         store.dispatch(DownloadAction.RemoveAllQueuedDownloadsAction).joinBlocking()
         assertTrue(store.state.queuedDownloads.isEmpty())
     }
+<<<<<<< HEAD
 
     @Test
     fun `UpdateQueuedDownloadAction updates the provided download`() {
@@ -76,4 +77,6 @@ class DownloadActionTest {
         assertEquals(2, store.state.queuedDownloads.size)
         assertEquals(updatedDownload, store.state.queuedDownloads[updatedDownload.id])
     }
+=======
+>>>>>>> Closes #7103 #5217: Move queued download state to browser store
 }
