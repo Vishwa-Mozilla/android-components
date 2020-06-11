@@ -36,15 +36,13 @@ class SyncedTabsStorage(
      */
     fun start() {
         scope = store.flowScoped { flow ->
-            flow.ifChanged { it.tabs }.map { state ->
-                // TO-DO: https://github.com/mozilla-mobile/android-components/issues/5178
-                val lastUsed = 0L
+            flow.ifChanged { it.tabs }.map { state -
                 // TO-DO: https://github.com/mozilla-mobile/android-components/issues/5179
                 val iconUrl = null
                 state.tabs.filter { !it.content.private }.map { tab ->
                     // TO-DO: https://github.com/mozilla-mobile/android-components/issues/1340
                     val history = listOf(TabEntry(tab.content.title, tab.content.url, iconUrl))
-                    Tab(history, 0, lastUsed)
+                    Tab(history, 0, tab.lastAccess)
                 }
             }.collect { tabs ->
                 tabsStorage.store(tabs)

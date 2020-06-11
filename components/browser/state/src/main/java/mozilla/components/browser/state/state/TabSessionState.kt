@@ -30,7 +30,8 @@ data class TabSessionState(
     val parentId: String? = null,
     override val extensionState: Map<String, WebExtensionState> = emptyMap(),
     val readerState: ReaderState = ReaderState(),
-    override val contextId: String? = null
+    override val contextId: String? = null,
+    val lastAccess: Long = 0L
 ) : SessionState {
 
     override fun createCopy(

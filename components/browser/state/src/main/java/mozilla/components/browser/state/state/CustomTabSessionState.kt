@@ -16,6 +16,7 @@ import java.util.UUID
  * @property extensionState a map of web extension ids and extensions, that contains the overridden
  * values for this tab.
  * @property contextId the session context ID of this custom tab.
+ * @property lastAccess the timestamp for last access to the session
  */
 data class CustomTabSessionState(
     override val id: String = UUID.randomUUID().toString(),
